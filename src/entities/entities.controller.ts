@@ -6,24 +6,22 @@ import {
   Param,
   Patch,
   Post,
-  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { CreateEntityDto } from './dto/create-entity.dto';
-import { UpdateEntityDto } from './dto/update-entity.dto';
+import { CreateEntryDto } from './dto/create-entity.dto';
+import { UpdateEntryDto } from './dto/update-entity.dto';
 import { EntitiesService } from './entities.service';
 
-@Controller('api/entities')
+@Controller('api/entries')
 export class EntitiesController {
   constructor(private readonly entitiesService: EntitiesService) {}
 
   @Post()
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @UsePipes(new ValidationPipe())
-  create(@Body() createEntityDto: CreateEntityDto) {
-    return this.entitiesService.create(createEntityDto);
+  create(@Body() createEntryDto: CreateEntryDto) {
+    return this.entitiesService.create(createEntryDto);
   }
 
   @Get()
@@ -37,8 +35,8 @@ export class EntitiesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateEntityDto: UpdateEntityDto) {
-    return this.entitiesService.update(+id, updateEntityDto);
+  update(@Param('id') id: string, @Body() updateEntryDto: UpdateEntryDto) {
+    return this.entitiesService.update(+id, updateEntryDto);
   }
 
   @Delete(':id')

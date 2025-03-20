@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryService } from 'src/categories/categories.service';
+import { CategoryService } from '../categories/categories.service';
 import { Repository } from 'typeorm';
-import { CreateEntityDto } from './dto/create-entity.dto';
-import { UpdateEntityDto } from './dto/update-entity.dto';
+import { CreateEntryDto } from './dto/create-entity.dto';
+import { UpdateEntryDto } from './dto/update-entity.dto';
 import { Entry } from './entities/entity.entity';
 
 @Injectable()
@@ -14,12 +14,12 @@ export class EntitiesService {
     private categoryService: CategoryService,
   ) {}
 
-  async create(createEntityDto: CreateEntityDto) {
+  async create(createEntryDto: CreateEntryDto) {
     const category = await this.categoryService.findByTitle(
-      createEntityDto.category,
+      createEntryDto.category,
     );
 
-    const entity = { ...createEntityDto, category: category };
+    const entity = { ...createEntryDto, category: category };
 
     return this.entityRepository.save(entity);
   }
@@ -40,7 +40,7 @@ export class EntitiesService {
     return `This action returns a #${id} entity`;
   }
 
-  update(id: number, updateEntityDto: UpdateEntityDto) {
+  update(id: number, updateEntryDto: UpdateEntryDto) {
     return `This action updates a #${id} entity`;
   }
 

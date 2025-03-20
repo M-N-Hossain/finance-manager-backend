@@ -1,6 +1,6 @@
 import { IsString } from 'class-validator';
 
-export class CreateEntityDto {
+export class CreateEntryDto {
   @IsString()
   title: string;
   amount: number;
