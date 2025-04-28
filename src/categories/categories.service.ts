@@ -12,15 +12,27 @@ export class CategoryService {
   ) {}
 
   create(createCategoryDto: CreateCategoryDto) {
-    return this.categoryRepository.save(createCategoryDto);
+    try {
+      return this.categoryRepository.save(createCategoryDto);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   findAll() {
-    return this.categoryRepository.find();
+    try {
+      return this.categoryRepository.find();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   findByTitle(title: string) {
-    return this.categoryRepository.findOne({ where: { title } });
+    try {
+      return this.categoryRepository.findOne({ where: { title } });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // findOne(id: string) {

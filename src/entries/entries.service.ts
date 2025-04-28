@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CategoryService } from '../categories/categories.service';
 import { Repository } from 'typeorm';
-import { CreateEntryDto } from './dto/create-entity.dto';
-import { UpdateEntryDto } from './dto/update-entity.dto';
-import { Entry } from './entities/entity.entity';
+import { CategoryService } from '../categories/categories.service';
+import { CreateEntryDto } from './dto/create-entry.dto';
+import { UpdateEntryDto } from './dto/update-entry.dto';
+import { Entry } from './entities/entry.entity';
 
 @Injectable()
 export class EntitiesService {
@@ -44,7 +44,7 @@ export class EntitiesService {
     return `This action updates a #${id} entity`;
   }
 
-  remove(id: number) {
+  delete(id: number) {
     return `This action removes a #${id} entity`;
   }
 }

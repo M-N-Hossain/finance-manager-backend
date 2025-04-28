@@ -9,9 +9,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { CreateEntryDto } from './dto/create-entity.dto';
-import { UpdateEntryDto } from './dto/update-entity.dto';
-import { EntitiesService } from './entities.service';
+import { CreateEntryDto } from './dto/create-entry.dto';
+import { UpdateEntryDto } from './dto/update-entry.dto';
+import { EntitiesService } from './entries.service';
 
 @Controller('api/entries')
 export class EntitiesController {
@@ -40,7 +40,7 @@ export class EntitiesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.entitiesService.remove(+id);
+  delete(@Param('id') id: string) {
+    return this.entitiesService.delete(+id);
   }
 }

@@ -1,5 +1,5 @@
-import { Entry } from '../../entities/entities/entity.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Entry } from '../../entries/entities/entry.entity';
 
 @Entity()
 export class Category {
